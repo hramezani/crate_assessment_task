@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: crate
+    ports:
+      - "4200:4200"
+  file_writer:
+    image: crate_test
+    command: ["./wait-for-it.sh", "db:4200", "--", "python", "crate_assessment/runner.py"]
+    volumes:
+      - ../data:/code/data:ro
+    environment:
+      - CRATE_DB_ADDRESS=crate://db:4200
+    depends_on:
+      - db
