@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 
 
 engine = create_engine(
-    os.environ.get('CRATE_DB_ADDRESS', 'crate://crate@localhost:4200')
+    os.environ.get('CRATE_DB_ADDRESS', 'crate://localhost:4200')
 )
 Base = declarative.declarative_base(bind=engine)
 Session = sessionmaker(bind=engine)
