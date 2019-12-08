@@ -1,0 +1,2 @@
+crate==0.23.2
+sqlalchemy==1.3.11
